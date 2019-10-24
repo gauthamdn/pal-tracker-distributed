@@ -11,7 +11,18 @@ import java.util.TimeZone;
 
 @SpringBootApplication
 @ComponentScan({"io.pivotal.pal.tracker.backlog", "io.pivotal.pal.tracker.restsupport"})
-public class App {
+public class App_1 {
 
+    public static void main(String[] args) {
+        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+        SpringApplication.run(App_1.class, args);
+    }
 
+    @Bean
+    ProjectClient projectClient(
+            RestOperations restOperations,
+            @Value("${registration.server.endpoint}") String registrationEndpoint
+    ) {
+        return new ProjectClient(restOperations, registrationEndpoint);
+    }
 }
