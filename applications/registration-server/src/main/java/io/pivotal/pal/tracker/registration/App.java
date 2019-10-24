@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 import java.util.TimeZone;
 
-
+@EnableEurekaClient
 @SpringBootApplication
 @ComponentScan({
     "io.pivotal.pal.tracker.accounts",
@@ -15,7 +15,6 @@ import java.util.TimeZone;
     "io.pivotal.pal.tracker.users",
     "io.pivotal.pal.tracker.registration"
 })
-@EnableEurekaClient
 public class App {
     public static void main(String[] args) {
         TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
